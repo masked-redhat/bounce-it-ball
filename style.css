@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+#playButton {
+    position: absolute;
+    box-sizing: unset;
+    width: 30px;
+    height: 30px;
+    top: 0px;
+    left: 0px;
+    padding: 20px;
+    z-index: 100;
+    cursor: pointer;
+    filter: invert(1);
+}
+
+.text {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    color: rgb(173, 125, 228);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10vmin;
+}
+
+.background {
+    width: 100vw;
+    height: 100vh;
+    background-color: #010048;
+    filter: invert(0);
+    z-index: 1;
+}
+
+.ball {
+    --ball-size: 2vmax;
+    --height: calc(100vh - var(--ball-size));
+    --horizontal-stop: calc(100vw - var(--ball-size));
+    background-color: red;
+    width: var(--ball-size);
+    height: var(--ball-size);
+    position: absolute;
+    border-radius: calc(var(--ball-size) / 2);
+    animation: verticalBounce 0.4s cubic-bezier(0, 0.21, 0.55, 0.98) infinite alternate, horizontalPushPull 7.3s cubic-bezier(0.21, 0.59, 0.55, 0.93) infinite, changeColor 4s cubic-bezier(0.53, -0.36, 0.35, 0.35) infinite;
+    z-index: 98;
+}
+
+@keyframes verticalBounce {
+    from {
+        bottom: 0;
+    }
+
+    to {
+        bottom: var(--height);
+    }
+}
+
+@keyframes horizontalPushPull {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(var(--horizontal-stop));
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+
+}
+
+@keyframes changeColor {
+    0% {
+        background-color: red;
+    }
+
+    25% {
+
+        background-color: rgb(68, 201, 206);
+    }
+
+    50% {
+        background-color: #2ec920;
+    }
+
+    75% {
+
+        background-color: azure;
+    }
+
+    100% {
+        background-color: red;
+    }
+}
